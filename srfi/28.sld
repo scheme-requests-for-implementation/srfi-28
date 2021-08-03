@@ -6,8 +6,7 @@
   (import (scheme base) (scheme write))
   (begin
 
-(define format
-  (lambda (format-string . objects)
+(define (format format-string . objects)
     (let ((buffer (open-output-string)))
       (let loop ((format-list (string->list format-string))
                  (objects objects))
@@ -37,6 +36,6 @@
                      (else
                       (error 'format "Unrecognized escape sequence")))))
               (else (write-char (car format-list) buffer)
-                    (loop (cdr format-list) objects)))))))
+                    (loop (cdr format-list) objects))))))
 
 ))
