@@ -1,3 +1,11 @@
+;; Copyright 2002 Scott G. Miller
+;; SPDX-License-Identifier: MIT
+
+(define-library (srfi 28)
+  (export format)
+  (import (scheme base) (scheme write))
+  (begin
+
 (define format
   (lambda (format-string . objects)
     (let ((buffer (open-output-string)))
@@ -30,3 +38,5 @@
                       (error 'format "Unrecognized escape sequence")))))
               (else (write-char (car format-list) buffer)
                     (loop (cdr format-list) objects)))))))
+
+))
